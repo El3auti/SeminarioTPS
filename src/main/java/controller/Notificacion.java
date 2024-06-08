@@ -31,15 +31,16 @@ public class Notificacion {
     public void enviarNotificacion() {
         Persona persona = ticket.getPersona();
         String telefono = persona.getTelefono();
-        String url = "https://api.whatsapp.com/send?phone=" + telefono + "&text=" + mensaje;
-        System.out.println("Enlace de notificación: " + url);
+        String mensaje = ticket.getMensaje();
+        String url = "https://api.whatsapp.com/send?phone=" + telefono + "&text=" + mensaje.replace(" ", "%20");
+        System.out.println("Enlace para notificar: " + url);
     }
 
-    // Método para enviar notificación con mensaje personalizado
     public void enviarNotificacion(String mensajePersonalizado) {
         Persona persona = ticket.getPersona();
         String telefono = persona.getTelefono();
-        String url = "https://api.whatsapp.com/send?phone=" + telefono + "&text=" + mensajePersonalizado;
+        String url = "https://api.whatsapp.com/send?phone=" + telefono + "&text=" + mensajePersonalizado.replace(" ", "%20");
         System.out.println("Enlace de notificación personalizada: " + url);
     }
+
 }

@@ -7,9 +7,9 @@ import java.sql.Statement;
 
 public class ManagerBD {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/universidad_test";
-    private static final String USER = "newuser";
-    private static final String PASSWORD = "password";
+    private static final String URL = "jdbc:mysql://localhost:3306/bautioficial";
+    private static final String USER = "root";
+    private static final String PASSWORD = "sqlserver";
 
     private static Connection connection;
     private static ManagerBD instance;
@@ -17,9 +17,10 @@ public class ManagerBD {
     // Constructor privado para evitar instanciación externa
     private ManagerBD() {
         try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
             createTables();
-        } catch (SQLException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             throw new RuntimeException("Exception occurred in creating singleton instance", ex);
         }
     }
@@ -42,6 +43,7 @@ public class ManagerBD {
         try (Statement statement = connection.createStatement()) {
             String createProductoTable = "CREATE TABLE IF NOT EXISTS Producto ("
                     + "ID int PRIMARY KEY AUTO_INCREMENT, "
+                    + "Nombre VARCHAR(255), "  // Asegúrate de que coincide con tu clase Producto
                     + "DescripcionProblema VARCHAR(255)"
                     + ")";
             statement.executeUpdate(createProductoTable);
@@ -50,17 +52,16 @@ public class ManagerBD {
                     + "ID int PRIMARY KEY AUTO_INCREMENT, "
                     + "Nombre VARCHAR(255), "
                     + "Email VARCHAR(255), "
-                    + "Telefono int"
+                    + "Telefono VARCHAR(20)"  // Telefono como VARCHAR si puede tener guiones, etc.
                     + ")";
             statement.executeUpdate(createPersonaTable);
 
-            String createTicketsTable = "CREATE TABLE IF NOT EXISTS Tickets ("
+            String createTicketsTable = "CREATE TABLE IF NOT EXISTS ticket ("
                     + "ID int PRIMARY KEY AUTO_INCREMENT, "
                     + "personaID int, "
                     + "productoID int, "
-                    + "Estado VARCHAR(50), "
                     + "Descripcion TEXT, "
-                    + "FechaCreacion date, "
+                    + "Mensaje TEXT, "  // Campo adicional que falta en la definición original
                     + "FOREIGN KEY (personaID) REFERENCES Persona(ID), "
                     + "FOREIGN KEY (productoID) REFERENCES Producto(ID)"
                     + ")";

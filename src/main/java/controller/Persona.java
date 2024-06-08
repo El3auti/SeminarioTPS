@@ -123,19 +123,19 @@ public class Persona extends BaseCrud<Persona> {
     }
 
    static public Persona selectPersona(ResultSet rs) throws SQLException {
+        Persona persona = null;
         while (rs.next()) {
             try {
                 int id = rs.getInt("id");
                 String nombre = rs.getString("Nombre");
                 String telefono = rs.getString("Telefono");
                 String email = rs.getString("Email");
-                return new Persona(id, nombre, telefono, email);
+                persona = new Persona(id, nombre, telefono, email);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
         }
-
-        return null;
+        return persona;
     }
 
     public int getIDbyEmail(String email) {

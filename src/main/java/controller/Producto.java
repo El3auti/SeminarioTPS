@@ -121,6 +121,6 @@ public class Producto extends BaseCrud<Producto> {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return -1; // Si no se encuentra el ID, retornamos -1
+        return -1;
     }
 }
