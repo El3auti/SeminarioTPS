@@ -43,7 +43,7 @@ public class ManagerBD {
         try (Statement statement = connection.createStatement()) {
             String createProductoTable = "CREATE TABLE IF NOT EXISTS Producto ("
                     + "ID int PRIMARY KEY AUTO_INCREMENT, "
-                    + "Nombre VARCHAR(255), "  // Asegúrate de que coincide con tu clase Producto
+                    + "Nombre VARCHAR(255), "
                     + "DescripcionProblema VARCHAR(255)"
                     + ")";
             statement.executeUpdate(createProductoTable);
@@ -52,7 +52,7 @@ public class ManagerBD {
                     + "ID int PRIMARY KEY AUTO_INCREMENT, "
                     + "Nombre VARCHAR(255), "
                     + "Email VARCHAR(255), "
-                    + "Telefono VARCHAR(20)"  // Telefono como VARCHAR si puede tener guiones, etc.
+                    + "Telefono VARCHAR(20)"
                     + ")";
             statement.executeUpdate(createPersonaTable);
 
@@ -61,7 +61,7 @@ public class ManagerBD {
                     + "personaID int, "
                     + "productoID int, "
                     + "Descripcion TEXT, "
-                    + "Mensaje TEXT, "  // Campo adicional que falta en la definición original
+                    + "Mensaje TEXT, "
                     + "FOREIGN KEY (personaID) REFERENCES Persona(ID), "
                     + "FOREIGN KEY (productoID) REFERENCES Producto(ID)"
                     + ")";

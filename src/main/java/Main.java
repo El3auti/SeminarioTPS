@@ -53,7 +53,7 @@ public class Main {
             printMenu();
 
             int opcion = scanner.nextInt();
-            scanner.nextLine(); // Limpiar el buffer
+            scanner.nextLine();
 
             switch (opcion) {
                 case 1:
@@ -91,7 +91,7 @@ public class Main {
                     // Leer ticket
                     System.out.print("🔍 Ingrese el ID del ticket a leer: ");
                     int idLeer = scanner.nextInt();
-                    scanner.nextLine(); // Limpiar el buffer
+                    scanner.nextLine();
                     Ticket ticketParaLeer = new Ticket(null, null, null, null);
                     Ticket ticketLeido = ticketParaLeer.read(idLeer);
                     if (ticketLeido != null) {
@@ -104,7 +104,7 @@ public class Main {
                     // Actualizar ticket
                     System.out.print("✏️ Ingrese el ID del ticket a actualizar: ");
                     int idActualizar = scanner.nextInt();
-                    scanner.nextLine(); // Limpiar el buffer
+                    scanner.nextLine();
                     System.out.print("✏️ Ingrese la nueva descripción del ticket: ");
                     String nuevaDescripcion = scanner.nextLine();
                     System.out.print("✏️ Ingrese el nuevo mensaje del ticket: ");
@@ -138,7 +138,7 @@ public class Main {
                     // Eliminar ticket
                     System.out.print("🗑️ Ingrese el ID del ticket a eliminar: ");
                     int idEliminar = scanner.nextInt();
-                    scanner.nextLine(); // Limpiar el buffer
+                    scanner.nextLine();
                     Ticket ticketParaEliminar = new Ticket(null, null, null, null);
                     boolean eliminado = ticketParaEliminar.delete(idEliminar);
                     if (eliminado) {
@@ -151,7 +151,7 @@ public class Main {
                     // Enviar notificación
                     System.out.print("📩 Ingrese el ID del ticket para enviar la notificación: ");
                     int idNotificacion = scanner.nextInt();
-                    scanner.nextLine(); // Limpiar el buffer
+                    scanner.nextLine();
                     Ticket ticketParaNotificacion = new Ticket(null, null, null, null);
                     Ticket ticketLeidoParaNotificacion = ticketParaNotificacion.read(idNotificacion);
                     if (ticketLeidoParaNotificacion != null) {
