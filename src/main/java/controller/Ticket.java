@@ -5,6 +5,8 @@ import config.BaseCrud;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Ticket extends BaseCrud<Ticket> {
     private String descripcion;
@@ -174,6 +176,22 @@ public class Ticket extends BaseCrud<Ticket> {
 
     private Producto getProducto(int productoId) {
        return new Producto().read(productoId);
+    }
+
+    public List<Integer> DisplayTicketsIDS() {
+        List<Integer> ticketIDs = new ArrayList<>();
+        String query = "SELECT ID FROM ticket";
+        try {
+            PreparedStatement pstmt = conexion.prepareStatement(query);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("ID");
+                ticketIDs.add(id);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ticketIDs;
     }
 }
 

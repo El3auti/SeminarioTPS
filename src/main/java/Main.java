@@ -12,7 +12,7 @@ public class Main {
     // Método para imprimir el menú con estilo y emoticonos
     private static void printMenu() {
         System.out.println("\n╔════════════════════════════════════╗");
-        System.out.println("║        🎟️ Menú CRUD para Tickets 🎟️      ║");
+        System.out.println("║        🎟️ Menú CRUD para Tickets 🎟️ ║");
         System.out.println("╠════════════════════════════════════╣");
         System.out.println("║ 1. 📝 Crear ticket                   ║");
         System.out.println("║ 2. 🔍 Leer ticket                    ║");
@@ -27,14 +27,14 @@ public class Main {
     // Método para imprimir mensajes con estilo y emoticonos
     private static void printMessage(String message) {
         System.out.println("\n╔════════════════════════════════════╗");
-        System.out.println("║ " + message + " 😊" +             "║");
+        System.out.println("║ " + message + " 😊" +              "║");
         System.out.println("╚════════════════════════════════════╝\n");
     }
 
     // Método para imprimir un ticket con estilo y emoticonos
     private static void printTicket(Ticket ticket) {
         System.out.println("\n╔════════════════════════════════════╗");
-        System.out.println("║          🎫 Ticket encontrado 🎫     ║");
+        System.out.println("║          🎫 Ticket encontrado 🎫    ║");
         System.out.println("╠════════════════════════════════════╣");
         System.out.println("║ Descripción: " + ticket.getDescripcion());
         System.out.println("║ Mensaje: " + ticket.getMensaje());
@@ -89,10 +89,13 @@ public class Main {
                     break;
                 case 2:
                     // Leer ticket
+                    Ticket ticketParaLeer = new Ticket(null, null, null, null);
+                    System.out.println("=============================");
+                    System.out.println(ticketParaLeer.DisplayTicketsIDS());
+                    System.out.println("=============================");
                     System.out.print("🔍 Ingrese el ID del ticket a leer: ");
                     int idLeer = scanner.nextInt();
                     scanner.nextLine();
-                    Ticket ticketParaLeer = new Ticket(null, null, null, null);
                     Ticket ticketLeido = ticketParaLeer.read(idLeer);
                     if (ticketLeido != null) {
                         printTicket(ticketLeido);
