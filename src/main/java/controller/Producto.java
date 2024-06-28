@@ -38,6 +38,7 @@ public class Producto extends BaseCrud<Producto> {
     @Override
     public boolean create(Producto obj) {
         Producto producto = (Producto) obj;
+
         String query = "INSERT INTO Producto (Nombre, DescripcionProblema) VALUES (?, ?)";
         try {
             PreparedStatement pstmt = conexion.prepareStatement(query);
@@ -122,5 +123,13 @@ public class Producto extends BaseCrud<Producto> {
             e.printStackTrace();
         }
         return -1;
+    }
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "nombre='" + nombre + '\'' +
+                ", descripcionProblema='" + descripcionProblema + '\'' +
+                '}';
     }
 }

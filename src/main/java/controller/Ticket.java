@@ -14,6 +14,8 @@ public class Ticket extends BaseCrud<Ticket> {
     private Persona persona;
     private Producto producto;
 
+    public Ticket(){}
+
     public Ticket(String descripcion, String mensaje, Persona persona, Producto producto) {
         this.descripcion = descripcion;
         this.mensaje = mensaje;
@@ -58,12 +60,12 @@ public class Ticket extends BaseCrud<Ticket> {
         Ticket ticket = (Ticket) obj;
         try {
 
-            if (!persona.create(ticket.getPersona())) {
+            if (!obj.getPersona().create(ticket.getPersona())) {
                 return false;
             }
             String PersonaEmail = ticket.getPersona().getEmail();
 
-            if (!producto.create(ticket.getProducto())) {
+            if (!obj.getProducto().create(ticket.getProducto())) {
                 return false;
             }
             String Problemaproducto = ticket.getProducto().getDescripcionProblema();
@@ -116,7 +118,7 @@ public class Ticket extends BaseCrud<Ticket> {
             String email = ticket.getPersona().getEmail();
             int personaID = ticket.getPersona().getIDbyEmail(email);
             if (personaID == -1) {
-                if (!persona.create(ticket.getPersona())) {
+                if (!ticket.getPersona().create(ticket.getPersona())) {
                     System.out.println("Error: No se pudo crear la persona.");
                     return false;
                 }
@@ -128,7 +130,7 @@ public class Ticket extends BaseCrud<Ticket> {
 
             int productoID = ticket.getProducto().getIDbyProblema(descripcion_problema);
             if (productoID == -1) {
-                if (!producto.create(ticket.getProducto())) {
+                if (!ticket.getProducto().create(ticket.getProducto())) {
                     System.out.println("Error: No se pudo crear el producto.");
                     return false;
                 }
@@ -192,6 +194,16 @@ public class Ticket extends BaseCrud<Ticket> {
             e.printStackTrace();
         }
         return ticketIDs;
+    }
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "descripcion='" + descripcion + '\'' +
+                ", mensaje='" + mensaje + '\'' +
+                ", persona=" + persona +
+                ", producto=" + producto +
+                '}';
     }
 }
 

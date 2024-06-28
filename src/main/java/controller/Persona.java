@@ -12,31 +12,19 @@ public class Persona extends BaseCrud<Persona> {
     private String email;
 
     public Persona() {
-        this.id = -1;
-        this.nombre = "";
-        this.telefono = "";
-        this.email = "";
     }
 
     public Persona(String nombre, String telefono, String email) {
-        this.id = -1;
         this.nombre = nombre;
         this.telefono = telefono;
         this.email = email;
     }
 
-    public Persona(int id, String nombre, String telefono, String email) {
+    public Persona(int id,String nombre, String telefono, String email) {
         this.id = id;
         this.nombre = nombre;
         this.telefono = telefono;
         this.email = email;
-    }
-
-    public Persona(Persona persona) {
-        this.id = persona.id;
-        this.nombre = persona.nombre;
-        this.telefono = persona.telefono;
-        this.email = persona.email;
     }
 
     public String getNombre() {
@@ -151,5 +139,15 @@ public class Persona extends BaseCrud<Persona> {
             e.printStackTrace();
         }
         return -1; // Si no se encuentra el ID, retornamos -1
+    }
+
+    @Override
+    public String toString() {
+        return "Persona{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
