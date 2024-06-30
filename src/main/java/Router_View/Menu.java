@@ -18,37 +18,41 @@ public class Menu {
         return managerdb;
     }
 
-    // Método para imprimir el menú con estilo y emoticonos
-    public static void printOptionsMenu() {
+    private static void printOptionsMenu() {
         System.out.println("\n╔════════════════════════════════════╗");
-        System.out.println("║        🎟️ SupportTicketMaster 🎟️ ║");
+        System.out.println("║        🎟️ SupportTicketMaster 🎟️   ║");
         System.out.println("╠════════════════════════════════════╣");
-        System.out.println("║ 1. 📝 Crear ticket                   ║");
-        System.out.println("║ 2. 🔍 Leer ticket                    ║");
-        System.out.println("║ 3. ✏️ Actualizar ticket              ║");
-        System.out.println("║ 4. 🗑️ Eliminar ticket                ║");
-        System.out.println("║ 5. 📩 Enviar notificación            ║");
-        System.out.println("║ 6. 🚪 Salir                          ║");
+        System.out.println("║ 1. 📝 Crear ticket                 ║");
+        System.out.println("║ 2. 🔍 Leer ticket                  ║");
+        System.out.println("║ 3. ✏️ Actualizar ticket            ║");
+        System.out.println("║ 4. 🗑️ Eliminar ticket              ║");
+        System.out.println("║ 5. 📩 Enviar notificación          ║");
+        System.out.println("║ 6. 🚪 Salir                        ║");
         System.out.println("╚════════════════════════════════════╝");
         System.out.print("Ingrese una opción: ");
     }
 
-    public static void printMessageResult(String message) {
-        System.out.println("\n╔════════════════════════════════════╗");
-        System.out.println( message );
-        System.out.println("╚════════════════════════════════════╝\n");
+    private static void printMessageResult(String message) {
+
+        System.out.println("\n╔════════════════════════════════════╗" + message + "\n╚════════════════════════════════════╝\n" );
+
     }
 
-    // Método para imprimir un ticket con estilo y emoticonos
-    public static void printTicketResultResult(Ticket ticket) {
+    private static void printTicketResultResult(Ticket ticket) {
         System.out.println("\n╔════════════════════════════════════╗");
-        System.out.println("║          🎫 Ticket encontrado 🎫    ║");
+        System.out.println("║          🎫 Ticket encontrado 🎫   ║");
         System.out.println("╠════════════════════════════════════╣");
         System.out.println("║ Descripción: " + ticket.getDescripcion());
         System.out.println("║ Mensaje: " + ticket.getMensaje());
         System.out.println("║ Persona: " + ticket.getPersona().getNombre());
         System.out.println("║ Producto: " + ticket.getProducto().getNombre() + " - " + ticket.getProducto().getDescripcionProblema());
         System.out.println("╚════════════════════════════════════╝\n");
+    }
+
+    private static void printDisplay(){
+        System.out.println("=============================");
+        System.out.println(ticketmaster.DisplayTicketsIDS());
+        System.out.println("=============================");
     }
 
     public static void StartMenu(){
@@ -93,9 +97,7 @@ public class Menu {
                     break;
                 case 2:
                     // Leer ticket
-                    System.out.println("=============================");
-                    System.out.println(ticketmaster.DisplayTicketsIDS());
-                    System.out.println("=============================");
+                    printDisplay();
                     System.out.print("🔍 Ingrese el ID del ticket a leer: ");
                     int idLeer = scanner.nextInt();
                     scanner.nextLine();
@@ -108,9 +110,7 @@ public class Menu {
                     break;
                 case 3:
                     // Actualizar ticket
-                    System.out.println("=============================");
-                    System.out.println(ticketmaster.DisplayTicketsIDS());
-                    System.out.println("=============================");
+                    printDisplay();
                     System.out.print("✏️ Ingrese el ID del ticket a actualizar: ");
                     int idActualizar = scanner.nextInt();
                     scanner.nextLine();
@@ -144,9 +144,7 @@ public class Menu {
                     break;
                 case 4:
                     // Eliminar ticket
-                    System.out.println("=============================");
-                    System.out.println(ticketmaster.DisplayTicketsIDS());
-                    System.out.println("=============================");
+                    printDisplay();
                     System.out.print("🗑️ Ingrese el ID del ticket a eliminar: ");
                     int idEliminar = scanner.nextInt();
                     scanner.nextLine();
@@ -159,9 +157,7 @@ public class Menu {
                     break;
                 case 5:
                     // Enviar notificación
-                    System.out.println("=============================");
-                    System.out.println(ticketmaster.DisplayTicketsIDS());
-                    System.out.println("=============================");
+                    printDisplay();
                     System.out.print("📩 Ingrese el ID del ticket para enviar la notificación: ");
                     int idNotificacion = scanner.nextInt();
                     scanner.nextLine();

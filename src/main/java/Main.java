@@ -8,7 +8,7 @@ public class Main {
         try {
             Menu.getManagerdb().getConnection().close();
         } catch (SQLException e) {
-            Menu.printMessageResult("Error al cerrar la conexión a la base de datos: " + e.getMessage());
+            System.out.println("Error al cerrar la conexión a la base de datos: " + e.getMessage());
         }
     }
 }
